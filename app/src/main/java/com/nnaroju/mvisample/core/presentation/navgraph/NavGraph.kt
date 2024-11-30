@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.nnaroju.mvisample.todohome.domain.presentation.TodoHomeScreen
 
 
 @Composable
@@ -24,7 +25,12 @@ fun NavGraph(
         composable(
             route = Route.TodoHomeScreen.route
         ) {
-            Text(text = "Todo Home")
+            TodoHomeScreen(modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
+                onNavigateToAddNote = {
+                    navController.navigate(route = Route.AddTodoItemScreen.route)
+                })
         }
 
         composable(route = Route.AddTodoItemScreen.route) {

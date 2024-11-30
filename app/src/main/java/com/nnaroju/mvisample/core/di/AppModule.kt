@@ -3,6 +3,9 @@ package com.nnaroju.mvisample.core.di
 import android.app.Application
 import androidx.room.Room
 import com.nnaroju.mvisample.core.data.local.TodoDatabase
+import com.nnaroju.mvisample.core.data.repository.TodoRepositoryImpl
+import com.nnaroju.mvisample.core.domian.repository.TodoRepository
+import com.nnaroju.mvisample.todohome.domain.use_cases.GetToDoItemsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,22 +26,16 @@ object AppModule {
         ).build()
     }
 
-    /* @Provides
-     @Singleton
-     fun provideNoteRepository(notesDatabase: TodoDatabase): NotesRepository {
-         return NotesRepositoryImpl(notesDatabase)
-     }
+    @Provides
+    @Singleton
+    fun provideTodoRepository(todoDatabase: TodoDatabase): TodoRepository {
+        return TodoRepositoryImpl(todoDatabase)
+    }
 
-     @Provides
-     @Singleton
-     fun provideGetAllNotesUseCase(notesRepository: NotesRepository): GetAllNotes {
-         return GetAllNotes(notesRepository)
-     }
+    @Provides
+    @Singleton
+    fun provideGetToDoItemsUseCase(todoRepository: TodoRepository): GetToDoItemsUseCase {
+        return GetToDoItemsUseCase(todoRepository)
+    }
 
-     @Provides
-     @Singleton
-     fun provideDeleteNotesUseCase(notesRepository: NotesRepository): DeleteNotes {
-         return DeleteNotes(notesRepository)
-     }
- */
 }
