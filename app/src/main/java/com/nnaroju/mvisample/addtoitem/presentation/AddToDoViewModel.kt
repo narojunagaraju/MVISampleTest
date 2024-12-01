@@ -34,7 +34,7 @@ class AddToDoViewModel @Inject constructor(
                             description = currentState.description
                         )
                     )
-                    if (result != 1L) {
+                    if (result == 1L) {
                         delay(3000L)
                         setState { copy(isLoading = false) }
                         sendEffect(AddToDoScreenEffect.NavigateToHome)
