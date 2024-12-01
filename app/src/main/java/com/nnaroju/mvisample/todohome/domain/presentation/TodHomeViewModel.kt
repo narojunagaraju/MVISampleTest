@@ -21,15 +21,27 @@ class TodHomeViewModel @Inject constructor(
     override fun handleEvent(event: TodoHomeScreenEvent) {
         when (event) {
             TodoHomeScreenEvent.FetchAllTodoItems -> fetchAllTodoItems()
+            is TodoHomeScreenEvent.SetErrorMessage -> updateErrorMessage(event)
+        }
+    }
+
+    private fun updateErrorMessage(event: TodoHomeScreenEvent.SetErrorMessage) {
+        setState {
+            copy(errorMessage = event.errorMessage)
         }
     }
 
     private fun fetchAllTodoItems() = viewModelScope.launch {
         runCatching {
-            setState { copy(isLoading = true) }
+            setState {
+                copy(
+                    isLoading = true,
+                    errorMessage = null
+                )
+            }
             val todoItems = getToDoItemsUseCase()
             setState {
-                currentState.copy(
+                copy(
                     isLoading = false,
                     todoList = todoItems
                 )

@@ -9,8 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.nnaroju.mvisample.addtoitem.presentation.AddToDoItemScreen
 import com.nnaroju.mvisample.todohome.domain.presentation.TodoHomeScreen
 
+const val REFRESH_CONTENT = "refreshContent"
+const val ERROR_MESSAGE = "errorMessage"
 
 @Composable
 fun NavGraph(
@@ -25,16 +28,44 @@ fun NavGraph(
         composable(
             route = Route.TodoHomeScreen.route
         ) {
-            TodoHomeScreen(modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
+            val refreshContent = navController.currentBackStackEntry
+                ?.savedStateHandle
+                ?.getStateFlow(REFRESH_CONTENT, false)
+
+            val errorMessage = navController.currentBackStackEntry
+                ?.savedStateHandle
+                ?.getStateFlow(ERROR_MESSAGE, "")
+
+            TodoHomeScreen(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize(),
                 onNavigateToAddNote = {
                     navController.navigate(route = Route.AddTodoItemScreen.route)
-                })
+                },
+                refreshContent = refreshContent?.value ?: false,
+                errorMessage = errorMessage?.value ?: ""
+            )
         }
 
         composable(route = Route.AddTodoItemScreen.route) {
-            Text(text = "Hello Add Note")
+            AddToDoItemScreen(
+                modifier = Modifier.padding(innerPadding),
+                navigateBack = { errorMessage ->
+                    navController.previousBackStackEntry?.savedStateHandle?.set(
+                        ERROR_MESSAGE,
+                        errorMessage
+                    )
+                    navController.navigateUp()
+                },
+                navigateToHome = {
+                    navController.previousBackStackEntry?.savedStateHandle?.set(
+                        REFRESH_CONTENT,
+                        true
+                    )
+                    navController.navigateUp()
+                }
+            )
         }
 
         composable(route = Route.SearchTodoItemScreen.route) {

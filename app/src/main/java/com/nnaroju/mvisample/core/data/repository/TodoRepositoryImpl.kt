@@ -12,8 +12,8 @@ class TodoRepositoryImpl(
 
     private val todoDao = todoDatabase.todoDao
 
-    override suspend fun upsertTodoItem(todoItem: TodoItem) {
-        todoDao.upsertTodItem(todoItem.toTodoEntity())
+    override suspend fun upsertTodoItem(todoItem: TodoItem): Long {
+        return todoDao.upsertTodItem(todoItem.toTodoEntity())
     }
 
     override suspend fun deleteTodoItem(todoItem: TodoItem) {

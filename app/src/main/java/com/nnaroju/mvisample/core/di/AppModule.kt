@@ -2,6 +2,7 @@ package com.nnaroju.mvisample.core.di
 
 import android.app.Application
 import androidx.room.Room
+import com.nnaroju.mvisample.addtoitem.use_cases.InsertTodoItemUseCase
 import com.nnaroju.mvisample.core.data.local.TodoDatabase
 import com.nnaroju.mvisample.core.data.repository.TodoRepositoryImpl
 import com.nnaroju.mvisample.core.domian.repository.TodoRepository
@@ -36,6 +37,12 @@ object AppModule {
     @Singleton
     fun provideGetToDoItemsUseCase(todoRepository: TodoRepository): GetToDoItemsUseCase {
         return GetToDoItemsUseCase(todoRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideInsertTodoItemUseCase(todoRepository: TodoRepository): InsertTodoItemUseCase {
+        return InsertTodoItemUseCase(todoRepository)
     }
 
 }

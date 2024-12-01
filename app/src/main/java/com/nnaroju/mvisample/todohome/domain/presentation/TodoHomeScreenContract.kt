@@ -14,9 +14,10 @@ data class TodoHomeScreenState(
 ) : UiState()
 
 sealed class TodoHomeScreenEvent : UiEvent() {
-    object FetchAllTodoItems : TodoHomeScreenEvent()
+    data object FetchAllTodoItems : TodoHomeScreenEvent()
+    data class SetErrorMessage(val errorMessage: String = "") : TodoHomeScreenEvent()
 }
 
 sealed class TodoHomeScreenEffect : UiEffect() {
-    object NavigateToAddTodoItem : TodoHomeScreenEffect()
+    data object NavigateToAddTodoItem : TodoHomeScreenEffect()
 }

@@ -3,7 +3,16 @@
     <string name="todo_list_app">TODO LIST APP</string>
     <string name="press_the_button_to_add_a_todo">Press the + button to add a TODO item.</string>
     <string name="search">Search</string>
+    <string name="back">Back</string>
     <string name="add">Add</string>
     <string name="error">Error</string>
     <string name="unknown_error_occurred_please_try_again">Unknown error occurred,Please try again...</string>
+    <string name="add_todo_item">Add Todo Item</string>
+    <string name="clear_text">Clear text</string>
+    <string name="enter_description">Enter Description</string>
+    <string name="enter_title">Enter Title</string>
+    <string name="add_item">Add TODO</string>
+    <string name="button_icon">Button Icon</string>
+    <string name="confirm">Confirm</string>
+    <string name="dismiss">Dismiss</string>
 </resources>
