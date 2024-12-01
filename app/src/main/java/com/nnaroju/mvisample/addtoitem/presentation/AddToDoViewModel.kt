@@ -1,5 +1,6 @@
 package com.nnaroju.mvisample.addtoitem.presentation
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.nnaroju.mvisample.addtoitem.use_cases.InsertTodoItemUseCase
 import com.nnaroju.mvisample.core.domian.model.TodoItem
@@ -34,7 +35,7 @@ class AddToDoViewModel @Inject constructor(
                             description = currentState.description
                         )
                     )
-                    if (result == 1L) {
+                    if (result > 0L) {
                         delay(3000L)
                         setState { copy(isLoading = false) }
                         sendEffect(AddToDoScreenEffect.NavigateToHome)

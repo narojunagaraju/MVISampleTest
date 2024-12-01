@@ -30,7 +30,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideTodoRepository(todoDatabase: TodoDatabase): TodoRepository {
-        return TodoRepositoryImpl(todoDatabase)
+        return TodoRepositoryImpl(todoDatabase.todoDao)
     }
 
     @Provides
