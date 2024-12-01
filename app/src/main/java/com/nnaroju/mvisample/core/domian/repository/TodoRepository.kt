@@ -8,4 +8,6 @@ interface TodoRepository {
     suspend fun deleteTodoItem(todoItem: TodoItem)
 
     suspend fun getAllTodoItems(): List<TodoItem>
+
+    suspend fun searchItems(searchQuery: String): List<TodoItem>
 }

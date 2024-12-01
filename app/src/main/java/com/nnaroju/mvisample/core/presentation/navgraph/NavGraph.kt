@@ -10,7 +10,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nnaroju.mvisample.addtoitem.presentation.AddToDoItemScreen
-import com.nnaroju.mvisample.todohome.domain.presentation.TodoHomeScreen
+import com.nnaroju.mvisample.searchitems.presentation.TodoSearchScreen
+import com.nnaroju.mvisample.todohome.presentation.TodoHomeScreen
 
 const val REFRESH_CONTENT = "refreshContent"
 const val ERROR_MESSAGE = "errorMessage"
@@ -43,6 +44,9 @@ fun NavGraph(
                 onNavigateToAddNote = {
                     navController.navigate(route = Route.AddTodoItemScreen.route)
                 },
+                onNavigateToSearch = {
+                    navController.navigate(route = Route.SearchTodoItemScreen.route)
+                },
                 refreshContent = refreshContent?.value ?: false,
                 errorMessage = errorMessage?.value ?: ""
             )
@@ -69,7 +73,7 @@ fun NavGraph(
         }
 
         composable(route = Route.SearchTodoItemScreen.route) {
-            Text(text = "Hey Search screen")
+            TodoSearchScreen(modifier = Modifier.padding(innerPadding))
         }
     }
 }

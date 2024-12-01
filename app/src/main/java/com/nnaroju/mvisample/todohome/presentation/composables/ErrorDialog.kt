@@ -1,4 +1,4 @@
-package com.nnaroju.mvisample.todohome.domain.presentation.composables
+package com.nnaroju.mvisample.todohome.presentation.composables
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.nnaroju.mvisample.R
-import com.nnaroju.mvisample.todohome.domain.presentation.TodoHomeScreenEvent
+import com.nnaroju.mvisample.todohome.presentation.TodoHomeScreenEvent
 
 @Composable
 fun ShowErrorDialog(

@@ -1,4 +1,4 @@
-package com.nnaroju.mvisample.todohome.domain.presentation.composables
+package com.nnaroju.mvisample.todohome.presentation.composables
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background

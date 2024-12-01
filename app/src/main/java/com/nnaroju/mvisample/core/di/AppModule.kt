@@ -6,11 +6,14 @@ import com.nnaroju.mvisample.addtoitem.use_cases.InsertTodoItemUseCase
 import com.nnaroju.mvisample.core.data.local.TodoDatabase
 import com.nnaroju.mvisample.core.data.repository.TodoRepositoryImpl
 import com.nnaroju.mvisample.core.domian.repository.TodoRepository
-import com.nnaroju.mvisample.todohome.domain.use_cases.GetToDoItemsUseCase
+import com.nnaroju.mvisample.searchitems.presentation.use_cases.SearchItemsUseCase
+import com.nnaroju.mvisample.todohome.use_cases.GetToDoItemsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 @Module
@@ -43,6 +46,18 @@ object AppModule {
     @Singleton
     fun provideInsertTodoItemUseCase(todoRepository: TodoRepository): InsertTodoItemUseCase {
         return InsertTodoItemUseCase(todoRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchItemUseCase(todoRepository: TodoRepository): SearchItemsUseCase {
+        return SearchItemsUseCase(todoRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDispatcher(): CoroutineDispatcher {
+        return Dispatchers.IO
     }
 
 }

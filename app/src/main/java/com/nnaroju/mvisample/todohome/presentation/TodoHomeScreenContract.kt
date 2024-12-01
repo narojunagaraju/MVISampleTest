@@ -1,4 +1,4 @@
-package com.nnaroju.mvisample.todohome.domain.presentation
+package com.nnaroju.mvisample.todohome.presentation
 
 import androidx.compose.runtime.Stable
 import com.nnaroju.mvisample.core.domian.model.TodoItem
@@ -20,4 +20,5 @@ sealed class TodoHomeScreenEvent : UiEvent() {
 
 sealed class TodoHomeScreenEffect : UiEffect() {
     data object NavigateToAddTodoItem : TodoHomeScreenEffect()
+    data object NavigateToSearchItem : TodoHomeScreenEffect()
 }

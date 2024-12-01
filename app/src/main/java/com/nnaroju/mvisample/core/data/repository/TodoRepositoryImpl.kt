@@ -1,7 +1,6 @@
 package com.nnaroju.mvisample.core.data.repository
 
 import com.nnaroju.mvisample.core.data.local.TodoDao
-import com.nnaroju.mvisample.core.data.local.TodoDatabase
 import com.nnaroju.mvisample.core.data.mapper.toTodoEntity
 import com.nnaroju.mvisample.core.data.mapper.toTodoItem
 import com.nnaroju.mvisample.core.domian.model.TodoItem
@@ -22,5 +21,9 @@ class TodoRepositoryImpl(
 
     override suspend fun getAllTodoItems(): List<TodoItem> {
         return todoDao.getTodoItems().map { it.toTodoItem() }
+    }
+
+    override suspend fun searchItems(searchQuery: String): List<TodoItem> {
+        return todoDao.searchTodoItems(searchQuery).map { it.toTodoItem() }
     }
 }

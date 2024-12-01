@@ -1,4 +1,4 @@
-package com.nnaroju.mvisample.todohome.domain.presentation
+package com.nnaroju.mvisample.todohome.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,10 +11,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ManageSearch
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,13 +32,14 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.nnaroju.mvisample.R
-import com.nnaroju.mvisample.todohome.domain.presentation.composables.ListNoteItem
-import com.nnaroju.mvisample.todohome.domain.presentation.composables.ShowErrorDialog
+import com.nnaroju.mvisample.todohome.presentation.composables.ListNoteItem
+import com.nnaroju.mvisample.todohome.presentation.composables.ShowErrorDialog
 import com.nnaroju.mvisample.utils.collectInLaunchedEffect
 
 @Composable
 fun TodoHomeScreen(
     onNavigateToAddNote: () -> Unit,
+    onNavigateToSearch: () -> Unit,
     modifier: Modifier = Modifier,
     todHomeViewModel: TodHomeViewModel = hiltViewModel(),
     refreshContent: Boolean = false,
@@ -48,6 +51,7 @@ fun TodoHomeScreen(
     todHomeViewModel.effect.collectInLaunchedEffect { effect ->
         when (effect) {
             TodoHomeScreenEffect.NavigateToAddTodoItem -> onNavigateToAddNote()
+            TodoHomeScreenEffect.NavigateToSearchItem -> onNavigateToSearch()
         }
     }
 
@@ -78,10 +82,15 @@ fun TodoHomeScreen(
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 19.sp,
                 )
-                Icon(
-                    imageVector = Icons.AutoMirrored.Default.ManageSearch,
-                    contentDescription = stringResource(R.string.search)
-                )
+                IconButton(
+                    onClick = { onNavigateToSearch() }
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Default.ManageSearch,
+                        contentDescription = stringResource(R.string.search)
+                    )
+                }
+
             }
         },
         floatingActionButton = {

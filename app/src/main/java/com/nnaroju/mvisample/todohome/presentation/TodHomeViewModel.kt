@@ -1,7 +1,7 @@
-package com.nnaroju.mvisample.todohome.domain.presentation
+package com.nnaroju.mvisample.todohome.presentation
 
 import androidx.lifecycle.viewModelScope
-import com.nnaroju.mvisample.todohome.domain.use_cases.GetToDoItemsUseCase
+import com.nnaroju.mvisample.todohome.use_cases.GetToDoItemsUseCase
 import com.nnaroju.mvisample.utils.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

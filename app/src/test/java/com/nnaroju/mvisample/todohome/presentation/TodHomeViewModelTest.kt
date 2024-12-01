@@ -1,8 +1,10 @@
-package com.nnaroju.mvisample.todohome.domain.presentation
+package com.nnaroju.mvisample.todohome.presentation
 
 import com.nnaroju.mvisample.MainCoroutineRule
 import com.nnaroju.mvisample.core.domian.model.TodoItem
-import com.nnaroju.mvisample.todohome.domain.use_cases.GetToDoItemsUseCase
+import com.nnaroju.mvisample.todohome.use_cases.GetToDoItemsUseCase
+import com.nnaroju.mvisample.todohome.presentation.TodHomeViewModel
+import com.nnaroju.mvisample.todohome.presentation.TodoHomeScreenEvent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest

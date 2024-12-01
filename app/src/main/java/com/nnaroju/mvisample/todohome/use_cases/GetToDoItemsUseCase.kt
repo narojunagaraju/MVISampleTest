@@ -1,4 +1,4 @@
-package com.nnaroju.mvisample.todohome.domain.use_cases
+package com.nnaroju.mvisample.todohome.use_cases
 
 import com.nnaroju.mvisample.core.domian.model.TodoItem
 import com.nnaroju.mvisample.core.domian.repository.TodoRepository

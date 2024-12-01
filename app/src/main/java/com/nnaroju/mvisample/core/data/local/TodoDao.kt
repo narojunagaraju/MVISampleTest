@@ -2,8 +2,6 @@ package com.nnaroju.mvisample.core.data.local
 
 import androidx.room.Dao
 import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Upsert
 
@@ -17,4 +15,11 @@ interface TodoDao {
 
     @Delete
     suspend fun deleteTodoItems(todoEntity: TodoEntity)
+
+    @Query("""
+    SELECT * FROM todoentity 
+    WHERE LOWER(title) LIKE '%' || LOWER(:searchQuery) || '%' 
+       OR LOWER(description) LIKE '%' || LOWER(:searchQuery) || '%'
+""")
+    fun searchTodoItems(searchQuery: String): List<TodoEntity>
 }
